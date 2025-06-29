@@ -39,7 +39,7 @@ def verifier_recettes():
     for item in frigo_items:
         try:
             nom, qt = item.split(':')
-            frigo[nom.strip()] = int(qt)
+            frigo[nom.strip().lower()] = int(qt)
         except ValueError:
             messagebox.showerror("Erreur", f"Format incorrect pour l'ingrédient : {item}")
             return
@@ -52,7 +52,7 @@ def verifier_recettes():
         for pair in row['Ingrédients'].split(','):
             try:
                 nom, qte = pair.split(':')
-                ing_list.append(nom.strip())
+                ing_list.append(nom.strip().lower())
                 qt_list.append(qte.strip())
             except ValueError:
                 continue
